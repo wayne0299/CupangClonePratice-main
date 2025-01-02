@@ -23,4 +23,16 @@ public class SuccessResponse {
         return new ResponseEntity<>(message, headers, HttpStatus.OK);
 
     }
+
+    public ResponseEntity<Message> sendMessage(String messageContent) {
+        Message message = new Message();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(new MediaType("application", "json", StandardCharsets.UTF_8));
+
+        message.setStatus(StatusEnum.OK);
+        message.setMessage(messageContent);
+        message.setData(null); // 메시지 내용만 전달
+
+        return new ResponseEntity<>(message, headers, HttpStatus.OK);
+    }
 }
